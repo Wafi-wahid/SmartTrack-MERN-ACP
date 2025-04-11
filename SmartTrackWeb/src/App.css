@@ -16,7 +16,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 
 .logo {
@@ -24,9 +24,33 @@ body {
   font-weight: bold;
 }
 
-.nav-links div {
-  margin: 10px 0;
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 1rem;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, #cf6ee7, #3b82f6);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-icon {
+  font-size: 1.25rem;
 }
 
 .logout-btn {
@@ -109,7 +133,7 @@ body {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -122,9 +146,13 @@ body {
   color: #f87171;
 }
 
+.card-score {
+  color: #52c991;
+}
+
 .chart-title {
   margin-bottom: 16px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 

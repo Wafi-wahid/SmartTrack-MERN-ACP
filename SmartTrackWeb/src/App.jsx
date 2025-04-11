@@ -1,6 +1,18 @@
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
-import { FaBell, FaUserCircle } from "react-icons/fa";
+import {
+  FaBell,
+  FaUserCircle,
+  FaTachometerAlt,
+  FaClock,
+  FaTasks,
+  FaCog,
+  FaEnvelope,
+  FaFolder,
+  FaApple,
+  FaBook,
+} from "react-icons/fa";
+
 import "/Users/wafiwahid/University Folder/ACP_Project/SmartTrack-MERN-ACP/SmartTrackWeb/src/App.css";
 function App() {
   return (
@@ -8,12 +20,24 @@ function App() {
       <aside className="sidebar">
         <div className="logo">SmartTrack</div>
         <nav className="nav-links">
-          <div>Overview</div>
-          <div>Timeline</div>
-          <div>Tasks</div>
-          <div>Settings</div>
-          <div>Messages</div>
-          <div>Files</div>
+          <div className="nav-btn">
+            <FaTachometerAlt className="nav-icon" /> DashBoard
+          </div>
+          <div className="nav-btn">
+            <FaClock className="nav-icon" /> Timeline
+          </div>
+          <div className="nav-btn">
+            <FaTasks className="nav-icon" /> Tasks
+          </div>
+          <div className="nav-btn">
+            <FaBook className="nav-icon" /> Journaling
+          </div>
+          <div className="nav-btn">
+            <FaApple className="nav-icon" /> Meditation
+          </div>
+          <div className="nav-btn">
+            <FaCog className="nav-icon" /> Settings
+          </div>
         </nav>
         <button className="logout-btn">Logout</button>
       </aside>
@@ -30,12 +54,14 @@ function App() {
 
         <div className="stats-grid">
           <div className="card">
-            <h2 className="card-title">718+</h2>
+            <h2 className="card-title">Total Tasks</h2>
+            <p className="card-score">718+</p>
             <p className="card-subtitle">111% more than last year</p>
           </div>
 
           <div className="card">
-            <h2 className="card-title">45/72</h2>
+            <h2 className="card-title">Current Task</h2>
+            <p className="card-score">2/45</p>
             <p className="card-subtitle warning">
               You completed over 37% tasks. Keep it up!
             </p>
