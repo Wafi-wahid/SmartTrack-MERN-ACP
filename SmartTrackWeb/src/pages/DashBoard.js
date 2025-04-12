@@ -14,7 +14,7 @@ import {
   FaPeace,
 } from "react-icons/fa";
 
-import "SmartTrack-MERN-ACP/SmartTrackWeb/styles/Dashboard.css";
+import "../styles/Dashboard.css";
 export default function DashBoard() {
   return (
     <div className="dashboard">
