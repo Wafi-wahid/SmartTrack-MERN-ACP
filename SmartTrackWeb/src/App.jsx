@@ -1,9 +1,9 @@
 import DashBoard from "./pages/DashBoard";
-
+import Calender from "./pages/Calender";
 function App() {
   return (
     <>
-      <DashBoard></DashBoard>
+      <Calendar></Calendar>
     </>
   );
 }
