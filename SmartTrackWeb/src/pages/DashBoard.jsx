@@ -7,14 +7,12 @@ import {
   FaClock,
   FaTasks,
   FaCog,
-  FaEnvelope,
-  FaFolder,
-  FaApple,
+  FaBrain,
   FaBook,
   FaPeace,
 } from "react-icons/fa";
 
-import "../styles/Dashboard.css";
+import "../styles/dashboard.css";
 export default function DashBoard() {
   return (
     <div className="dashboard">
