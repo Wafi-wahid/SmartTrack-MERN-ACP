@@ -11,6 +11,7 @@ import {
   FaFolder,
   FaApple,
   FaBook,
+  FaPeace,
 } from "react-icons/fa";
 
 import "/Users/wafiwahid/University Folder/ACP_Project/SmartTrack-MERN-ACP/SmartTrackWeb/src/App.css";
@@ -33,7 +34,7 @@ function App() {
             <FaBook className="nav-icon" /> Journaling
           </div>
           <div className="nav-btn">
-            <FaApple className="nav-icon" /> Meditation
+            <FaBrain className="nav-icon" /> Meditation
           </div>
           <div className="nav-btn">
             <FaCog className="nav-icon" /> Settings
