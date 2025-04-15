@@ -1,0 +1,214 @@
+/* Reset and overall page styling */
+body {
+    background-color: #1a1a1a; /* Black background */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: white;
+  }
+  
+  /* Main app container */
+  .app-container {
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Page title */
+  .page-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: white;
+  }
+  
+  /* Container for cards */
+  .cards-container {
+    max-width: 400px; /* Consistent width for cards */
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Column-wise arrangement */
+    gap: 25px; /* Spacing between cards */
+  }
+  
+  /* Card styling */
+  .card {
+    background-color: #2F2F2F; /* Darker grey background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 15px 20px; /* Padding inside cards */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    color: white; /* White text */
+  }
+  
+  /* Smaller card styling for the third card */
+  .small-card {
+    padding: 10px 15px; /* Reduced padding to make the card smaller */
+  }
+  
+  /* Card header */
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
+    /* Removed border-bottom to remove the underline */
+  }
+  
+  /* Remove underline for specific headers and move the header downward */
+  .card-header.no-underline {
+    border-bottom: none; /* Already no border, kept for consistency */
+    padding-top: 5px; /* Add padding-top to move the header downward */
+    padding-bottom: 5px; /* Adjust padding-bottom for balance */
+  }
+  
+  /* Style for the forward icon in the header */
+  .header-icon {
+    margin-left: 10px; /* Space between the heading and the icon */
+    color: white;
+    font-size: 18px;
+    position: relative;
+    top: 2px; /* Move the icon slightly downward */
+  }
+  
+ 
+  .dropdown-icon {
+    margin-left: 10px; 
+    color: white;
+    font-size: 18px;
+  }
+  
+ 
+  .small-card .card-header {
+    font-size: 16px; 
+  }
+  
+  .small-card .header-icon {
+    font-size: 16px; 
+    top: 2px; 
+  }
+  
+  .small-card .card-body p {
+    font-size: 14px; 
+  }
+  
+
+  .card-body {
+    padding-top: 10px;
+  }
+  
+  .card-body p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  
+  .bullet-list {
+    list-style: none;
+    padding-left: 20px; 
+    margin: 0;
+  }
+  
+  .bullet-list li {
+    position: relative;
+    margin-bottom: 10px; 
+    font-size: 18px; 
+    color: white;
+    padding-left: 20px; 
+  }
+  
+  
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px; 
+    width: 10px; 
+    height: 10px; 
+    background: linear-gradient(90deg, #cf6ee7, #3b82f6); 
+    border-radius: 50%; 
+  }
+  
+ 
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+    font-size: 16px;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    appearance: none; 
+    width: 18px; 
+    height: 18px;
+    border: 2px solid #A9A9A9; 
+    border-radius: 4px; 
+    margin-right: 10px; 
+    position: relative;
+    background-color: transparent; 
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked {
+    background-color: #000000; 
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked::before {
+    content: '✔'; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 14px;
+  }
+  
+  .checkbox-label span {
+    color: white; 
+  }
+  
+  .card.calendar-card {
+    background-color: #2F2F2F; 
+    color: white;
+  }
+  
+  .react-calendar {
+    width: 100% !important;
+    max-width: 100%; 
+    background: transparent !important; 
+    color: white !important; 
+    border: none !important; 
+  }
+  
+  
+  .react-calendar__tile,
+  .react-calendar__month-view__days__day,
+  .react-calendar__navigation__label,
+  .react-calendar__navigation__arrow {
+    color: white !important;
+    background: transparent !important;
+    font-size: 14px; 
+  }
+  
+
+  .react-calendar__tile--active,
+  .react-calendar__tile--hover {
+    background: #3b82f6 !important; 
+    color: white !important;
+  }
+  
+  
+  .react-calendar__navigation__label {
+    font-size: 16px;
+  }
+  
+  .react-calendar__navigation__arrow {
+    font-size: 20px;
+  }
+  
+  
+  .react-calendar__tile {
+    padding: 8px;
+  }
