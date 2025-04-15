@@ -1,12 +1,11 @@
 import DashBoard from "./pages/DashBoard";
-import Calender from "./pages/Calender";
 import TaskManage from "./pages/Task";
-import Journal from "./pages/Journal";
+import Calendar from "./pages/Calender";
 
 function App() {
   return (
     <>
-      <TaskManage></TaskManage>
+      <DashBoard></DashBoard>
     </>
   );
 }

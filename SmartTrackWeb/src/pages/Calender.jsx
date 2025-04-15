@@ -9,6 +9,9 @@ function Calender() {
   return (
     <>
       <CalendarCard></CalendarCard>
+      <CategoriesCard></CategoriesCard>
+      <FavouritesCard></FavouritesCard>
+      <MyCalendarCard></MyCalendarCard>
     </>
   );
 }

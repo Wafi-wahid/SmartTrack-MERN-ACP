@@ -1,6 +1,13 @@
 import React from "react";
 
-import { FaTachometerAlt, FaClock, FaTasks, FaBook, FaSpa, FaCog } from "react-icons/fa";
+import {
+  FaTachometerAlt,
+  FaClock,
+  FaTasks,
+  FaBook,
+  FaSpa,
+  FaCog,
+} from "react-icons/fa";
 
 const Sidebar = () => {
   return (
