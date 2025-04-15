@@ -1,16 +1,19 @@
 import DashBoard from "./pages/DashBoard";
 import Calender from "./pages/Calender";
-import Task from "./pages/Task";
+import TaskManage from "./pages/Task";
 import Journal from "./pages/Journal";
-import CalendarCard from "./pages/CalendarCard";
-import CategoriesCard from "./pages/CategoriesCard";
-import FavouritesCard from "./pages/FavouritesCard";
-import MyCalendarCard from "./pages/MyCalendarCard";
+
+
+import JournalEntries from "./pages/JournalEntries";
+import JournalForm from "./pages/JournalForm";
+import Sidebar from "./pages/Sidebar";
 
 function App() {
   return (
     <>
+  
       <DashBoard></DashBoard>
+      <TaskManage></TaskManage>
     </>
   );
 }
