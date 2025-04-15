@@ -6,7 +6,7 @@ import Journal from "./pages/Journal";
 function App() {
   return (
     <>
-      <DashBoard></DashBoard>
+      <TaskManage></TaskManage>
     </>
   );
 }
