@@ -1,7 +1,7 @@
 import "../styles/task.css";
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { FaPencilAlt, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 
 const Task = () => {
   const [tasks, setTasks] = useState({
@@ -57,7 +57,6 @@ const Task = () => {
         stage: "In progress",
         priority: "Medium",
         team: "Retails",
-        due: "Wednesday",
         isEditing: false,
       },
       {
@@ -65,7 +64,6 @@ const Task = () => {
         stage: "Not started",
         priority: "Medium",
         team: "People",
-        due: "Wednesday",
         isEditing: false,
       },
       {
@@ -73,17 +71,14 @@ const Task = () => {
         stage: "Not started",
         priority: "Low",
         team: "Development",
-        due: "Friday",
         isEditing: false,
       },
     ],
   });
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedSection, setSelectedSection] = useState("");
   const [newTask, setNewTask] = useState({
+    section: "Today", // default section to add task in
     name: "",
-    due: "",
     stage: "",
     priority: "",
     team: "",
@@ -105,22 +100,29 @@ const Task = () => {
     );
   };
 
-  const handlePriorityChange = (section, index, newPriority) => {
+  const handleFieldChange = (section, index, field, value) => {
     updateTaskList(section, (list) =>
-      list.map((task, i) =>
-        i === index ? { ...task, priority: newPriority } : task
-      )
+      list.map((task, i) => (i === index ? { ...task, [field]: value } : task))
     );
   };
 
   const handleAddTask = () => {
-    updateTaskList(selectedSection, (list) => [
+    if (!newTask.name || !newTask.stage || !newTask.priority || !newTask.team) {
+      alert("Please fill in all fields to add a task.");
+      return;
+    }
+    const { section, ...taskData } = newTask;
+    updateTaskList(section, (list) => [
       ...list,
-      { ...newTask, isEditing: false },
+      { ...taskData, isEditing: false },
     ]);
-    setNewTask({ name: "", due: "", stage: "", priority: "", team: "" });
-    setSelectedSection("");
-    setShowModal(false);
+    setNewTask({
+      section: "Today",
+      name: "",
+      stage: "",
+      priority: "",
+      team: "",
+    });
   };
 
   const TaskSection = ({ title, tasks }) => (
@@ -140,29 +142,58 @@ const Task = () => {
         <tbody>
           {tasks.map((task, index) => (
             <tr key={index}>
-              <td>{task.name}</td>
+              <td>
+                {task.isEditing ? (
+                  <input
+                    type="text"
+                    value={task.name}
+                    onChange={(e) =>
+                      handleFieldChange(title, index, "name", e.target.value)
+                    }
+                  />
+                ) : (
+                  task.name
+                )}
+              </td>
               <td>
                 {title === "Today"
                   ? "Today"
                   : title === "Tomorrow"
                   ? "Tomorrow"
-                  : task.due || "—"}
+                  : "This Week"}
               </td>
               <td>
-                <span
-                  className={`badge stage ${task.stage
-                    .toLowerCase()
-                    .replace(/ /g, "-")}`}
-                >
-                  {task.stage}
-                </span>
+                {task.isEditing ? (
+                  <select
+                    value={task.stage}
+                    onChange={(e) =>
+                      handleFieldChange(title, index, "stage", e.target.value)
+                    }
+                  >
+                    <option value="Not started">Not started</option>
+                    <option value="In progress">In progress</option>
+                  </select>
+                ) : (
+                  <span
+                    className={`badge stage ${task.stage
+                      .toLowerCase()
+                      .replace(/ /g, "-")}`}
+                  >
+                    {task.stage}
+                  </span>
+                )}
               </td>
               <td>
                 {task.isEditing ? (
                   <select
                     value={task.priority}
                     onChange={(e) =>
-                      handlePriorityChange(title, index, e.target.value)
+                      handleFieldChange(
+                        title,
+                        index,
+                        "priority",
+                        e.target.value
+                      )
                     }
                   >
                     <option value="High">High</option>
@@ -177,14 +208,26 @@ const Task = () => {
                   </span>
                 )}
               </td>
-              <td>{task.team}</td>
+              <td>
+                {task.isEditing ? (
+                  <input
+                    type="text"
+                    value={task.team}
+                    onChange={(e) =>
+                      handleFieldChange(title, index, "team", e.target.value)
+                    }
+                  />
+                ) : (
+                  task.team
+                )}
+              </td>
               <td>
                 <div className="action-buttons">
                   <button
                     className="edit-btn"
                     onClick={() => handleEditToggle(title, index)}
                   >
-                    {task.isEditing ? "Save" : "Edit"}
+                    {task.isEditing ? "Update" : "Edit"}
                   </button>
                   <button
                     className="delete-btn"
@@ -210,12 +253,59 @@ const Task = () => {
           <h1 className="title">My tasks</h1>
           <div className="header-right">
             <input className="search-input" placeholder="Search..." />
-            <FaPencilAlt
-              className="icon pencil-icon"
-              onClick={() => setShowModal(true)}
-            />
             <FaUserCircle className="icon profile-icon" />
           </div>
+        </div>
+
+        {/* Add Task Section */}
+        <div className="add-task-section">
+          <h2>Add New Task</h2>
+          <select
+            value={newTask.section}
+            onChange={(e) =>
+              setNewTask({ ...newTask, section: e.target.value })
+            }
+          >
+            {Object.keys(tasks).map((section) => (
+              <option key={section} value={section}>
+                {section}
+              </option>
+            ))}
+          </select>
+          <input
+            type="text"
+            placeholder="Task Name"
+            value={newTask.name}
+            onChange={(e) => setNewTask({ ...newTask, name: e.target.value })}
+          />
+          <select
+            value={newTask.stage}
+            onChange={(e) => setNewTask({ ...newTask, stage: e.target.value })}
+          >
+            <option value="">Select Stage</option>
+            <option value="In progress">In progress</option>
+            <option value="Not started">Not started</option>
+          </select>
+          <select
+            value={newTask.priority}
+            onChange={(e) =>
+              setNewTask({ ...newTask, priority: e.target.value })
+            }
+          >
+            <option value="">Select Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Team"
+            value={newTask.team}
+            onChange={(e) => setNewTask({ ...newTask, team: e.target.value })}
+          />
+          <button className="save-btn" onClick={handleAddTask}>
+            Add Task
+          </button>
         </div>
 
         <div className="taskContainer">
@@ -224,84 +314,6 @@ const Task = () => {
           ))}
         </div>
       </main>
-
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-box">
-            {!selectedSection ? (
-              <>
-                <h2 className="modal-title">
-                  Where do you want to add the task?
-                </h2>
-                <div className="section-select">
-                  {Object.keys(tasks).map((section) => (
-                    <button
-                      key={section}
-                      onClick={() => setSelectedSection(section)}
-                    >
-                      {section}
-                    </button>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <>
-                <h2 className="modal-title">Add Task to {selectedSection}</h2>
-                <input
-                  className="modal-input"
-                  placeholder="Task Name"
-                  value={newTask.name}
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, name: e.target.value })
-                  }
-                />
-                <select
-                  className="modal-input"
-                  value={newTask.stage}
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, stage: e.target.value })
-                  }
-                >
-                  <option value="">Select Stage</option>
-                  <option value="In progress">In progress</option>
-                  <option value="Not started">Not started</option>
-                </select>
-                <select
-                  className="modal-input"
-                  value={newTask.priority}
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, priority: e.target.value })
-                  }
-                >
-                  <option value="">Select Priority</option>
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
-                </select>
-                <input
-                  className="modal-input"
-                  placeholder="Team"
-                  value={newTask.team}
-                  onChange={(e) =>
-                    setNewTask({ ...newTask, team: e.target.value })
-                  }
-                />
-                <div className="modal-buttons">
-                  <button className="save-btn" onClick={handleAddTask}>
-                    Save
-                  </button>
-                  <button
-                    className="cancel-btn"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

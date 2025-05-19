@@ -1,0 +1,26 @@
+.meditation-wrapper {
+  display: flex;
+  background-color: #1a1a1a;
+  color: white;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.meditation-container {
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  padding: 40px;
+  margin-left: 20px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.meditation-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.meditation-container p {
+  font-size: 18px;
+  line-height: 1.6;
+}

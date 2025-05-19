@@ -5,6 +5,7 @@ const cors = require("cors");
 const dashboardRoutes = require("./Routes/dashboard");
 const journalRoutes = require("./Routes/journal");
 const taskRoutes = require("./Routes/task");
+const calenderRoutes = require("./Routes/calender");
 // Load env vars
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/", dashboardRoutes);
 app.use("/journal", journalRoutes);
 app.use("/task", taskRoutes);
+app.use("/calender", calenderRoutes);
 
 // MongoDB connection
 mongoose

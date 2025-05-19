@@ -29,9 +29,6 @@ export default function Sidebar() {
         <NavLink to="/meditation" className="nav-btn">
           <FaBrain className="nav-icon" /> Meditation
         </NavLink>
-        <NavLink to="/settings" className="nav-btn">
-          <FaCog className="nav-icon" /> Settings
-        </NavLink>
       </nav>
       <button className="logout-btn">Logout</button>
     </aside>

@@ -41,14 +41,6 @@ export default function DashBoard() {
           <div className="card">
             <h2 className="card-title">Total Tasks</h2>
             <p className="card-score">{data.totalTasks}</p>
-
-            <ul className="task-list">
-              {Array.isArray(data.taskList) && data.taskList.length > 0 ? (
-                data.taskList.map((task, i) => <li key={i}>{task}</li>)
-              ) : (
-                <li>No tasks available</li>
-              )}
-            </ul>
           </div>
 
           <div className="card">

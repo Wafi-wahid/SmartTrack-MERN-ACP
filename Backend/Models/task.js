@@ -14,7 +14,7 @@ const taskSchema = new mongoose.Schema(
       default: "Medium",
     },
     team: { type: String },
-    due: { type: String }, // "Today", "Tomorrow", "Wednesday", etc.
+    due: { type: String, required: true }, // "Today", "Tomorrow", "This Week"
   },
   { timestamps: true }
 );

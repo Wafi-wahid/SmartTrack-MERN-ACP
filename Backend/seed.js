@@ -13,15 +13,9 @@ mongoose
 
     await Dashboard.create({
       userId: "demo_user",
-      totalTasks: 12,
+      totalTasks: 9,
       currentTasks: 3,
-      taskList: [
-        "Design UI for SmartTrack",
-        "Integrate backend API",
-        "Update dashboard logic",
-        "Write journal about progress",
-        "Do 5-minute meditation",
-      ],
+
       currentTaskDetail: {
         title: "Refactor SmartTrack components",
         description:
