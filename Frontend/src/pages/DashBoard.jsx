@@ -1,27 +1,18 @@
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
-import {
-  FaBell,
-  FaUserCircle,
-  FaTachometerAlt,
-  FaClock,
-  FaTasks,
-  FaCog,
-  FaBrain,
-  FaBook,
-  FaPeace,
-} from "react-icons/fa";
+import { FaBell, FaUserCircle } from "react-icons/fa";
 import "../styles/dashboard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar"; // adjust path as needed
+import { useNavigate } from "react-router-dom";
 
 export default function DashBoard() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/dashboard")
+      .get("http://localhost:5000/")
       .then((res) => {
         console.log("Fetched:", res.data);
         setData(res.data[0]);
@@ -29,6 +20,7 @@ export default function DashBoard() {
       .catch((err) => console.error("Fetch error:", err));
   }, []);
 
+  const navigate = useNavigate();
   if (!data) return <div>Loading...</div>;
 
   return (
@@ -62,14 +54,24 @@ export default function DashBoard() {
           <div className="card">
             <h2 className="card-title">Current Task</h2>
             <p className="card-score">{data.currentTasks}</p>
-            <p className="card-subtitle">{data.currentTaskDetail}</p>
+            <p className="card-subtitle">
+              {data.currentTaskDetail ? (
+                <>
+                  <strong>{data.currentTaskDetail.title}</strong>
+                  <br />
+                  {data.currentTaskDetail.description}
+                </>
+              ) : (
+                "No current task"
+              )}
+            </p>
           </div>
 
           <div className="card">
             <h2 className="card-title">Journaling</h2>
             <p className="card-subtitle">{data.journalingMsg}</p>
             <p className="card-subtitle">{data.journals}</p>
-            <button className="btn" onClick={() => navigate("/journal/new")}>
+            <button className="btn" onClick={() => navigate("/journal")}>
               Write Journal
             </button>
           </div>
@@ -77,10 +79,7 @@ export default function DashBoard() {
           <div className="card">
             <h2 className="card-title">Meditation</h2>
             <p className="card-subtitle">{data.meditationMsg}</p>
-            <button
-              className="btn"
-              onClick={() => navigate("/meditation/start")}
-            >
+            <button className="btn" onClick={() => navigate("/meditation")}>
               Do Meditation
             </button>
           </div>

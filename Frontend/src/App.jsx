@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
 import Calender from "./pages/Calender";
-import Tasks from "./pages/Task";
+import Task from "./pages/Task";
 import Journal from "./pages/Journal";
 
 function App() {
@@ -10,8 +10,9 @@ function App() {
       <Routes>
         <Route path="/" element={<DashBoard />} />
         <Route path="/calender" element={<Calender />} />
-        <Route path="/task" element={<Tasks />} />
+        <Route path="/task" element={<Task />} />
         <Route path="/journal" element={<Journal />} />
+        <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </Router>
   );

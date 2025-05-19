@@ -10,7 +10,7 @@ const dashboardSchema = new mongoose.Schema({
     description: String,
     dueDate: Date,
   },
-  journals: [String],
+  journal: [String],
   journalingMsg: String,
   meditationMsg: String,
   chartData: [Number],

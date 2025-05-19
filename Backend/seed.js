@@ -23,12 +23,13 @@ mongoose
         "Do 5-minute meditation",
       ],
       currentTaskDetail: {
-  "title": "Refactor SmartTrack components",
-  "description": "Improve reusability of the Dashboard and Task components for better maintainability.",
-  "dueDate": "2025-05-21T18:00:00.000Z"
-}
+        title: "Refactor SmartTrack components",
+        description:
+          "Improve reusability of the Dashboard and Task components for better maintainability.",
+        dueDate: "2025-05-21T18:00:00.000Z",
+      },
 
-      journals: ["Felt productive today!", "Struggled with routing bug."],
+      journal: ["Felt productive today!", "Struggled with routing bug."],
 
       journalingMsg: "Take 5 mins to reflect 🌙",
 
