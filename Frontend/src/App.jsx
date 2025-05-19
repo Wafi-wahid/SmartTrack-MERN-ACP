@@ -1,12 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
-import TaskManage from "./pages/Task";
-import Calendar from "./pages/Calender";
+import Calender from "./pages/Calender";
+import Tasks from "./pages/Task";
+import Journal from "./pages/Journal";
 
 function App() {
   return (
-    <>
-      <DashBoard></DashBoard>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<DashBoard />} />
+        <Route path="/calender" element={<Calender />} />
+        <Route path="/task" element={<Tasks />} />
+        <Route path="/journal" element={<Journal />} />
+      </Routes>
+    </Router>
   );
 }
 

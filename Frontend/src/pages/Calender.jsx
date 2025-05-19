@@ -1,9 +1,9 @@
 import "../styles/calender.css";
 import React from "react";
-import CalendarCard from "../../components/CalendarCard";
-import CategoriesCard from "../../components/CategoriesCard";
-import FavouritesCard from "../../components/FavouritesCard";
-import MyCalendarCard from "../../components/MyCalendarCard";
+import CalendarCard from "../components/CalendarCard";
+import CategoriesCard from "../components/CategoriesCard";
+import FavouritesCard from "../components/FavouritesCard";
+import MyCalendarCard from "../components/MyCalendarCard";
 
 function Calender() {
   return (

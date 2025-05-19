@@ -1,18 +1,42 @@
-
 import React from "react";
-import { FaTachometerAlt, FaClock, FaTasks, FaBook, FaSpa, FaCog } from "react-icons/fa";
+import {
+  FaTachometerAlt,
+  FaClock,
+  FaTasks,
+  FaBook,
+  FaSpa,
+  FaCog,
+} from "react-icons/fa";
 
 // Sidebar component
 const Sidebar = () => (
   <div className="sidebar">
     <div className="logo">SmartTrack</div>
     <div className="nav-links">
-      <div className="nav-btn"><FaTachometerAlt className="nav-icon" /><span>DashBoard</span></div>
-      <div className="nav-btn"><FaClock className="nav-icon" /><span>Timeline</span></div>
-      <div className="nav-btn"><FaTasks className="nav-icon" /><span>Tasks</span></div>
-      <div className="nav-btn"><FaBook className="nav-icon" /><span>Journaling</span></div>
-      <div className="nav-btn"><FaSpa className="nav-icon" /><span>Meditation</span></div>
-      <div className="nav-btn"><FaCog className="nav-icon" /><span>Settings</span></div>
+      <div className="nav-btn">
+        <FaTachometerAlt className="nav-icon" />
+        <span>DashBoard</span>
+      </div>
+      <div className="nav-btn">
+        <FaClock className="nav-icon" />
+        <span>Timeline</span>
+      </div>
+      <div className="nav-btn">
+        <FaTasks className="nav-icon" />
+        <span>Tasks</span>
+      </div>
+      <div className="nav-btn">
+        <FaBook className="nav-icon" />
+        <span>Journaling</span>
+      </div>
+      <div className="nav-btn">
+        <FaSpa className="nav-icon" />
+        <span>Meditation</span>
+      </div>
+      <div className="nav-btn">
+        <FaCog className="nav-icon" />
+        <span>Settings</span>
+      </div>
     </div>
   </div>
 );
@@ -60,27 +84,37 @@ const JournalEntries = () => (
   <div className="journal-entries">
     <h3>Journal Entries</h3>
     <ul>
-      <li><strong>Coding</strong><p>learning Mongodb...</p></li>
-      <li><strong>Revision</strong><p>Reviwing lectures before final...</p></li>
-      <li><strong>Quiz Retake</strong><p>Reviwing lectures before quiz...</p></li>
+      <li>
+        <strong>Coding</strong>
+        <p>learning Mongodb...</p>
+      </li>
+      <li>
+        <strong>Revision</strong>
+        <p>Reviwing lectures before final...</p>
+      </li>
+      <li>
+        <strong>Quiz Retake</strong>
+        <p>Reviwing lectures before quiz...</p>
+      </li>
     </ul>
   </div>
 );
-
 
 const GoalList = () => (
   <div className="goal-list">
     <h3>Goals</h3>
     <div className="goal-item">
       <p>
-        <strong>Nunc pharetra odio nec</strong><br />
+        <strong>Nunc pharetra odio nec</strong>
+        <br />
         by 04/25/2024
       </p>
       <button>Done</button>
     </div>
     <div className="goal-item">
       <p>
-        <strong>Nunc pharetra odio nec</strong><br />
+        <strong>Nunc pharetra odio nec</strong>
+        <br />
         by 04/25/2024
       </p>
       <button>Done</button>
@@ -110,4 +144,3 @@ const Journal = () => (
 );
 
 export default Journal;
-

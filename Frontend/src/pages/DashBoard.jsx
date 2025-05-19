@@ -11,35 +11,29 @@ import {
   FaBook,
   FaPeace,
 } from "react-icons/fa";
-
 import "../styles/dashboard.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Sidebar from "../components/Sidebar"; // adjust path as needed
+
 export default function DashBoard() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/dashboard")
+      .then((res) => {
+        console.log("Fetched:", res.data);
+        setData(res.data[0]);
+      })
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
+
+  if (!data) return <div>Loading...</div>;
+
   return (
     <div className="dashboard">
-      <aside className="sidebar">
-        <div className="logo">SmartTrack</div>
-        <nav className="nav-links">
-          <div className="nav-btn">
-            <FaTachometerAlt className="nav-icon" /> DashBoard
-          </div>
-          <div className="nav-btn">
-            <FaClock className="nav-icon" /> Timeline
-          </div>
-          <div className="nav-btn">
-            <FaTasks className="nav-icon" /> Tasks
-          </div>
-          <div className="nav-btn">
-            <FaBook className="nav-icon" /> Journaling
-          </div>
-          <div className="nav-btn">
-            <FaBrain className="nav-icon" /> Meditation
-          </div>
-          <div className="nav-btn">
-            <FaCog className="nav-icon" /> Settings
-          </div>
-        </nav>
-        <button className="logout-btn">Logout</button>
-      </aside>
+      <Sidebar />
 
       <main className="main-content">
         <div className="header">
@@ -54,26 +48,41 @@ export default function DashBoard() {
         <div className="stats-grid">
           <div className="card">
             <h2 className="card-title">Total Tasks</h2>
-            <p className="card-score">718+</p>
-            <p className="card-subtitle">111% more than last year</p>
+            <p className="card-score">{data.totalTasks}</p>
+
+            <ul className="task-list">
+              {Array.isArray(data.taskList) && data.taskList.length > 0 ? (
+                data.taskList.map((task, i) => <li key={i}>{task}</li>)
+              ) : (
+                <li>No tasks available</li>
+              )}
+            </ul>
           </div>
 
           <div className="card">
             <h2 className="card-title">Current Task</h2>
-            <p className="card-score">2/45</p>
-            <p className="card-subtitle warning">
-              You completed over 37% tasks. Keep it up!
-            </p>
+            <p className="card-score">{data.currentTasks}</p>
+            <p className="card-subtitle">{data.currentTaskDetail}</p>
           </div>
 
           <div className="card">
             <h2 className="card-title">Journaling</h2>
-            <p className="card-subtitle">Write to reflect daily</p>
+            <p className="card-subtitle">{data.journalingMsg}</p>
+            <p className="card-subtitle">{data.journals}</p>
+            <button className="btn" onClick={() => navigate("/journal/new")}>
+              Write Journal
+            </button>
           </div>
 
           <div className="card">
             <h2 className="card-title">Meditation</h2>
-            <p className="card-subtitle">Calm your mind</p>
+            <p className="card-subtitle">{data.meditationMsg}</p>
+            <button
+              className="btn"
+              onClick={() => navigate("/meditation/start")}
+            >
+              Do Meditation
+            </button>
           </div>
         </div>
 
@@ -96,7 +105,7 @@ export default function DashBoard() {
                 datasets: [
                   {
                     label: "Tasks",
-                    data: [20, 35, 50, 80, 40, 30, 60, 70, 65],
+                    data: data.chartData,
                     borderColor: "#8B5CF6",
                     backgroundColor: "rgba(139, 92, 246, 0.2)",
                     tension: 0.4,
@@ -122,11 +131,9 @@ export default function DashBoard() {
               Upcoming meetings and deadlines
             </div>
             <div className="calendar-events">
-              April 12 - Team sync @ 10AM
-              <br />
-              April 14 - Project deadline
-              <br />
-              April 18 - Meditation challenge
+              {data.calendarEvents.map((event, i) => (
+                <div key={i}>{event}</div>
+              ))}
             </div>
           </div>
         </div>
