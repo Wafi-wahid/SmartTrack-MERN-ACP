@@ -15,16 +15,6 @@ mongoose
       userId: "demo_user",
       totalTasks: 9,
       currentTasks: 3,
-
-      currentTaskDetail: {
-        title: "Refactor SmartTrack components",
-        description:
-          "Improve reusability of the Dashboard and Task components for better maintainability.",
-        dueDate: "2025-05-21T18:00:00.000Z",
-      },
-
-      journal: ["Felt productive today!", "Struggled with routing bug."],
-
       journalingMsg: "Take 5 mins to reflect 🌙",
 
       meditationMsg: "Close your eyes, breathe 🌿",

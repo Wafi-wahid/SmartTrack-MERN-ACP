@@ -4,7 +4,7 @@ import { FaBell, FaUserCircle } from "react-icons/fa";
 import "../styles/dashboard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar"; // adjust path as needed
+import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 export default function DashBoard() {
@@ -41,22 +41,17 @@ export default function DashBoard() {
           <div className="card">
             <h2 className="card-title">Total Tasks</h2>
             <p className="card-score">{data.totalTasks}</p>
+            <button className="btn" onClick={() => navigate("/task")}>
+              See Tasks
+            </button>
           </div>
 
           <div className="card">
             <h2 className="card-title">Current Task</h2>
             <p className="card-score">{data.currentTasks}</p>
-            <p className="card-subtitle">
-              {data.currentTaskDetail ? (
-                <>
-                  <strong>{data.currentTaskDetail.title}</strong>
-                  <br />
-                  {data.currentTaskDetail.description}
-                </>
-              ) : (
-                "No current task"
-              )}
-            </p>
+            <button className="btn" onClick={() => navigate("/task")}>
+              Write task
+            </button>
           </div>
 
           <div className="card">
