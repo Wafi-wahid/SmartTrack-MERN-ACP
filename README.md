@@ -17,10 +17,10 @@ Developed SmartTrack, a full-stack productivity and personal management applicat
 React.js • Node.js • Express.js • MongoDB • JavaScript • JWT Authentication • Calendar API • Chart.js/Recharts • REST APIs • Tailwind CSS • Git • GitHub
 
 ## Team
-Wafi Wahid (Lead)
-Jaweriya Khan
-Maria Kiran
-Ayesha Asad
-Alishba Sajid
+#### Wafi Wahid (Lead)
+#### Jaweriya Khan
+#### Maria Kiran
+#### Ayesha Asad
+#### Alishba Sajid
 
 
